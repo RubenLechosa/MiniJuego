@@ -120,6 +120,7 @@ public class Bingo {
 						if (lleno(mapa[x]) == true) {
 							fin = true;
 							System.out.println("BINGO, el jugador " + (x + 1) + " ha ganado");
+							i = vector.length;
 						}
 					}
 					if (fin == false) {
