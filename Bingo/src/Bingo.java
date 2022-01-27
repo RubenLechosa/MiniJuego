@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Bingo {
 
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
 		int num = 0;
 
@@ -17,16 +18,48 @@ public class Bingo {
 				+ "|_______/|______|__/  \\__/\\______/ \\______/   \n    ");
 
 		int elegir = 0;
-		do {
-			System.out.println("1- IA o 2- JUGADORES");
-			elegir = sc.nextInt();
-		} while (elegir != 1 && elegir != 2);
+		int dinero = 1000;
+		String siOno = "none";
 		
-		if(elegir == 1){
+		do {
+			try {
+				System.out.println("Elige el modo de juego: \n[1] Jugador VS IA \n[2] jugador VS jugador");
+				elegir = Integer.parseInt(sc.next());
+			} catch (Exception e) {
+				System.out.println("Caracter inválido, vuelve a elegir \n");
+			}
+		} while (elegir != 1 && elegir != 2);
+
+		sc.nextLine();
+		
+		if (elegir == 1) {
 			String carton[][][] = new String[2][3][5];
-			rellenar(carton);
-			bingo(carton, true);
-		}else{
+
+			do {
+				try {
+					System.out.println("Precio del cartón: 10€ \nSaldo actual: "+dinero);
+					System.out.println("Quieres comprar un cartón? (si/no)");
+					siOno = sc.nextLine().toLowerCase();
+				} catch (Exception e) {
+					System.out.println("Caracter inválido, vuelve a elegir \n");
+				}
+			} while (!siOno.equals("si") && !siOno.equals("no"));
+			
+			if(siOno.equals("si")) {
+				dinero = dinero - 10;
+				System.out.println("Perfecto, eres el JUGADOR 1");
+				try {
+					Thread.sleep(2*2000);
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+				rellenar(carton);
+				bingo(carton, true);
+			}else if(siOno.equals("no")) {
+				System.out.println("No podemos dejarte jugar, lo siento");
+			}
+			
+		} else {
 			num = cuantos();
 			String carton[][][] = new String[num][3][5];
 			rellenar(carton);
@@ -117,19 +150,24 @@ public class Bingo {
 						comprobar = linea(mapa[x]);
 
 						if (comprobar == true && encontrada == false) {
-							System.out.println("Linea del jugador "+(x+1));
+							System.out.println("LINEA DEL JUGADOR " + (x + 1));
 							encontrada = true;
+							try {
+								Thread.sleep(2*2000);
+							} catch (Exception e) {
+								System.out.println(e);
+							}
 						}
 
 						if (lleno(mapa[x]) == true) {
 							fin = true;
-							System.out.println("BINGO, el jugador " + (x + 1) + " ha ganado");
+							System.out.println("BINGO, EL JUGADOR " + (x + 1) + " HA GANADO");
 							i = vector.length;
 						}
 					}
 					if (fin == false) {
 						try {
-							Thread.sleep(1 * 200);
+							Thread.sleep(1 * 500);
 						} catch (Exception e) {
 							System.out.println(e);
 						}
@@ -144,9 +182,9 @@ public class Bingo {
 										System.out.println("\n");
 										mostrar(mapa);
 										System.out.println("\nSe ha encontrado el numero " + temp
-												+ " en el carton del jugador" + x + ", seguimos para BINGO \n");
+												+ ", seguimos para BINGO \n");
 										try {
-											Thread.sleep(500);
+											Thread.sleep(1*500);
 										} catch (Exception e) {
 											System.out.println(e);
 										}
