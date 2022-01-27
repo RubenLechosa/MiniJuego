@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class main {
-	
+	/*Se recomienda descargar en el marketplace (ANSI Escape in console) para una mejor experiencia*/
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
 	public static final String ANSI_GREEN = "\u001B[32m";
@@ -42,7 +42,7 @@ public class main {
 		while(jugar == true) {
 			
 			System.out.println(" *******************");
-			System.out.println("  * SALDO : "+dinero+" € *");
+			System.out.println("  * SALDO : "+dinero+" â‚¬ *");
 			System.out.println(" *******************");
 
 			
@@ -60,7 +60,7 @@ public class main {
 				do {
 					apuesta = 0;
 					try {
-						System.out.println("Cuanto quieres apostar de tus "+dinero+" € ?");
+						System.out.println("Cuanto quieres apostar de tus "+dinero+" â‚¬ ?");
 						apuesta = Integer.parseInt(teclado.next());
 					}catch(Exception e) {
 						System.out.println("Caracter invalido");
