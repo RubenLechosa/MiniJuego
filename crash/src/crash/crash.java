@@ -1,4 +1,4 @@
-package crash;
+
 
 import java.util.Random;
 import java.util.Scanner;
@@ -8,12 +8,10 @@ public class crash {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		Random rand = new Random();
-		// TODO Auto-generated method stub
 		
 		String decicion = "";
 		
-		double money = 1000;
+		double dinero = 1000;
 		double eleccion = 0;
 		double elnumerito = 0;
 		double money_apuesta = 0;
@@ -25,7 +23,7 @@ public class crash {
 		cartel();
 
 		do {
-			System.out.println("Sabes como jugar al crash???\nSi o NO");
+			System.out.println("Sabes como jugar al crash? (si/no)");
 			decicion = sc.nextLine().toLowerCase();
 		}while(!decicion.equals("si") && !decicion.equals("no"));
 		
@@ -34,23 +32,35 @@ public class crash {
 			decicion = "";
 		}
 		
+		
+		
 		while (seguirsiono == true) {
 
-			System.out.println("Dinero:" + money);
-			do {
-				System.out.println("Cuanto quieres apostar?");
-				money_apuesta = sc.nextInt();
-			} while (money_apuesta > money);
+			
+			
+			System.out.println("Saldo actual "+dinero+" �");
+			
 			
 			do {
+				money_apuesta = -1;
 				try {
-					System.out.println("Por cuanto quieres multiplicar tu apuesta ?");
+					System.out.println("Cuanto quieres apostar? (max "+dinero+")");
+					money_apuesta = Integer.parseInt(sc.next());
+				} catch (Exception e) {
+					System.out.println("Caracter inv�lido");
+				}
+			} while (money_apuesta > dinero || money_apuesta < 0);
+			
+			do {
+				eleccion = -1;
+				try {
+					System.out.println("Por cuanto quieres multiplicar tu apuesta?");
 					eleccion = Double.parseDouble(sc.next());
 				}catch(Exception e) {
-					System.out.println("Caracter invalido");
+					System.out.println("Caracter inv�lido");
 				}
 
-			} while (eleccion > 100.00);
+			} while (eleccion > 100.00 || eleccion < 0);
 			
 			sc.nextLine();
 
@@ -58,20 +68,36 @@ public class crash {
 
 			if (eleccion <= el_ultimo_porcentaje) {
 				double newmoney = (money_apuesta * eleccion);
-				money = money-money_apuesta;
-				money = money + newmoney;
+				dinero = dinero-money_apuesta;
+				dinero = dinero + newmoney;
+				System.out.println("\nHas ganado "+newmoney+" �");
 			}else {
-				money = money-money_apuesta;
+				dinero = dinero - money_apuesta;
+				System.out.println("\nHas perdido "+money_apuesta+" �");
 			}
-			System.out.println(money);
 			
+			if(dinero > 0) {
+				
 			do {
-				System.out.println("Desea seguir jugando ?\nSi o No");
-				decicion = sc.nextLine().toLowerCase();
+				try {
+					System.out.println("Quieres seguir jugando? (si/no)");
+					decicion = sc.nextLine().toLowerCase();
+				} catch (Exception e) {
+					System.out.println("Caracter inv�lido, vuelve a elegir \n");
+				}
 			}while(!decicion.equals("si") && !decicion.equals("no"));
 
-			if (decicion.equals("no")) seguirsiono = false;
+			if (decicion.equals("no")) {
+				seguirsiono = false;
+				System.out.println("Hasta pronto!!!");
+			}
+			}else {
+				break;
+			}
+			
 		}
+		System.out.println("No te queda dinero, hasta pronto!!!");
+		sc.close();
 	}
 
 	public static double la_chicha(int dados, double elnumerito) {

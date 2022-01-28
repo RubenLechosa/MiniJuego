@@ -22,7 +22,7 @@ public class Bingo {
 		String siOno = "none";
 		boolean repetir = true;
 		String jugarrep = "none";
-		
+
 		do {
 			try {
 				System.out.println("Elige el modo de juego: \n[1] Jugador VS IA \n[2] jugador VS jugador");
@@ -33,37 +33,37 @@ public class Bingo {
 		} while (elegir != 1 && elegir != 2);
 
 		sc.nextLine();
-		
+
 		if (elegir == 1) {
 			String carton[][][] = new String[2][3][5];
 
-			while(repetir) {
-			do {
-				try {
-					System.out.println("Precio del cartón: 10€ \nSaldo actual: "+dinero);
-					System.out.println("Quieres comprar un cartón? (si/no)");
-					siOno = sc.nextLine().toLowerCase();
-				} catch (Exception e) {
-					System.out.println("Caracter inválido, vuelve a elegir \n");
+			while (repetir) {
+				do {
+					try {
+						System.out.println("Precio del cartón: 10€ \nSaldo actual: " + dinero);
+						System.out.println("Quieres comprar un cartón? (si/no)");
+						siOno = sc.nextLine().toLowerCase();
+					} catch (Exception e) {
+						System.out.println("Caracter inválido, vuelve a elegir \n");
+					}
+				} while (!siOno.equals("si") && !siOno.equals("no"));
+
+				if (siOno.equals("si")) {
+					dinero = dinero - 10;
+					System.out.println("Perfecto, eres el JUGADOR 1");
+					try {
+						Thread.sleep(2 * 2000);
+					} catch (Exception e) {
+						System.out.println(e);
+					}
+
+					rellenar(carton);
+					bingo(carton, true, dinero);
+
+				} else if (siOno.equals("no")) {
+					System.out.println("No podemos dejaros jugar, fuera de aquí!");
+					break;
 				}
-			} while (!siOno.equals("si") && !siOno.equals("no"));
-			
-			if(siOno.equals("si")) {
-				dinero = dinero - 10;
-				System.out.println("Perfecto, eres el JUGADOR 1");
-				try {
-					Thread.sleep(2*2000);
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-				
-				rellenar(carton);
-				bingo(carton, true, dinero);
-				
-			}else if(siOno.equals("no")) {
-				System.out.println("No podemos dejaros jugar, fuera de aquí!");
-				break;
-			}
 				do {
 					try {
 						System.out.println("Quieres volver a jugar? (si/no)");
@@ -72,45 +72,42 @@ public class Bingo {
 						System.out.println("Caracter inválido, vuelve a elegir \n");
 					}
 				} while (!siOno.equals("si") && !siOno.equals("no"));
-				
-				if(jugarrep.equals("si")) {
+
+				if (jugarrep.equals("si")) {
 					repetir = true;
-				}else {
+				} else {
 					repetir = false;
 				}
-				
-				
+
 			}
 			System.out.println("Hasta pronto!!!");
-			
-			
-		}else {
+
+		} else {
 			num = cuantos();
 			String carton[][][] = new String[num][3][5];
 
-						
-			while(repetir) {
-			do {
-				try {
-					System.out.println("Precio del cartón: 10€ \nSaldo actual: "+dinero);
-					System.out.println("Quieres comprar cartones (si/no)");
-					siOno = sc.nextLine().toLowerCase();
-				} catch (Exception e) {
-					System.out.println("Caracter inválido, vuelve a elegir \n");
-				}
-			} while (!siOno.equals("si") && !siOno.equals("no"));
-			
-			if(siOno.equals("si")) {
-				dinero = dinero - (10*carton.length);
+			while (repetir) {
+				do {
+					try {
+						System.out.println("Precio del cartón: 10€ \nSaldo actual: " + dinero);
+						System.out.println("Quieres comprar cartones (si/no)");
+						siOno = sc.nextLine().toLowerCase();
+					} catch (Exception e) {
+						System.out.println("Caracter inválido, vuelve a elegir \n");
+					}
+				} while (!siOno.equals("si") && !siOno.equals("no"));
 
-				rellenar(carton);
-				bingo(carton, false, dinero);
-				
-			}else if(siOno.equals("no")) {
-				System.out.println("No podemos dejaros jugar, fuera de aquí!");
-				break;
+				if (siOno.equals("si")) {
+					dinero = dinero - (10 * carton.length);
+
+					rellenar(carton);
+					bingo(carton, false, dinero);
+
+				} else if (siOno.equals("no")) {
+					System.out.println("No podemos dejaros jugar, fuera de aquí!");
+					break;
 				}
-				
+
 				do {
 					try {
 						System.out.println("Quereis volver a jugar? (si/no)");
@@ -119,17 +116,18 @@ public class Bingo {
 						System.out.println("Caracter inválido, vuelve a elegir \n");
 					}
 				} while (!siOno.equals("si") && !siOno.equals("no"));
-				
-				if(jugarrep.equals("si")) {
+
+				if (jugarrep.equals("si")) {
 					repetir = true;
-				}else {
+				} else {
 					repetir = false;
 				}
-			
+
 			}
-			System.out.println("Hasta pronto");
+			System.out.println("Hasta pronto!!!");
+			sc.close();
 		}
-		
+
 	}
 
 	public static int cuantos() {
@@ -141,7 +139,7 @@ public class Bingo {
 				System.out.println("Inserta el numero de Jugadores: (max 6)");
 				numero = Integer.parseInt(teclado.next());
 			} catch (Exception e) {
-
+				System.out.println("Caracter inválido");
 			}
 		} while (numero < 1 || numero > 6);
 
@@ -195,7 +193,7 @@ public class Bingo {
 		boolean comprobar = false;
 		boolean encontrada = false;
 		int ganador = 1;
-		
+
 		System.out.println();
 		mostrar(mapa);
 
@@ -218,11 +216,11 @@ public class Bingo {
 						if (comprobar == true && encontrada == false) {
 							System.out.println("LINEA DEL JUGADOR " + (x + 1));
 							encontrada = true;
-							if(ganador == (x+1)) {
+							if (ganador == (x + 1)) {
 								dinero = dinero + 20;
 							}
 							try {
-								Thread.sleep(2*2000);
+								Thread.sleep(2 * 2000);
 							} catch (Exception e) {
 								System.out.println(e);
 							}
@@ -231,7 +229,7 @@ public class Bingo {
 						if (lleno(mapa[x]) == true) {
 							fin = true;
 							System.out.println("BINGO, EL JUGADOR " + (x + 1) + " HA GANADO");
-							if(ganador == (x+1)) {
+							if (ganador == (x + 1)) {
 								dinero = dinero + 30;
 							}
 							i = vector.length;
@@ -253,10 +251,10 @@ public class Bingo {
 										mapa[z][x][k] = "-1";
 										System.out.println("\n");
 										mostrar(mapa);
-										System.out.println("\nSe ha encontrado el numero " + temp
-												+ ", seguimos para BINGO \n");
+										System.out.println(
+												"\nSe ha encontrado el numero " + temp + ", seguimos para BINGO \n");
 										try {
-											Thread.sleep(1*500);
+											Thread.sleep(1 * 500);
 										} catch (Exception e) {
 											System.out.println(e);
 										}
