@@ -10,43 +10,33 @@ public class casino {
 
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
-		System.out.println(
-				"                                                                                                                             \r\n"
-						+ "                                                                                                                             \r\n"
-						+ "        CCCCCCCCCCCCC               AAA                 SSSSSSSSSSSSSSS IIIIIIIIIINNNNNNNN        NNNNNNNN     OOOOOOOOO     \r\n"
-						+ "     CCC::::::::::::C              A:::A              SS:::::::::::::::SI::::::::IN:::::::N       N::::::N   OO:::::::::OO   \r\n"
-						+ "   CC:::::::::::::::C             A:::::A            S:::::SSSSSS::::::SI::::::::IN::::::::N      N::::::N OO:::::::::::::OO \r\n"
-						+ "  C:::::CCCCCCCC::::C            A:::::::A           S:::::S     SSSSSSSII::::::IIN:::::::::N     N::::::NO:::::::OOO:::::::O\r\n"
-						+ " C:::::C       CCCCCC           A:::::::::A          S:::::S              I::::I  N::::::::::N    N::::::NO::::::O   O::::::O\r\n"
-						+ "C:::::C                        A:::::A:::::A         S:::::S              I::::I  N:::::::::::N   N::::::NO:::::O     O:::::O\r\n"
-						+ "C:::::C                       A:::::A A:::::A         S::::SSSS           I::::I  N:::::::N::::N  N::::::NO:::::O     O:::::O\r\n"
-						+ "C:::::C                      A:::::A   A:::::A         SS::::::SSSSS      I::::I  N::::::N N::::N N::::::NO:::::O     O:::::O\r\n"
-						+ "C:::::C                     A:::::A     A:::::A          SSS::::::::SS    I::::I  N::::::N  N::::N:::::::NO:::::O     O:::::O\r\n"
-						+ "C:::::C                    A:::::AAAAAAAAA:::::A            SSSSSS::::S   I::::I  N::::::N   N:::::::::::NO:::::O     O:::::O\r\n"
-						+ "C:::::C                   A:::::::::::::::::::::A                S:::::S  I::::I  N::::::N    N::::::::::NO:::::O     O:::::O\r\n"
-						+ " C:::::C       CCCCCC    A:::::AAAAAAAAAAAAA:::::A               S:::::S  I::::I  N::::::N     N:::::::::NO::::::O   O::::::O\r\n"
-						+ "  C:::::CCCCCCCC::::C   A:::::A             A:::::A  SSSSSSS     S:::::SII::::::IIN::::::N      N::::::::NO:::::::OOO:::::::O\r\n"
-						+ "   CC:::::::::::::::C  A:::::A               A:::::A S::::::SSSSSS:::::SI::::::::IN::::::N       N:::::::N OO:::::::::::::OO \r\n"
-						+ "     CCC::::::::::::C A:::::A                 A:::::AS:::::::::::::::SS I::::::::IN::::::N        N::::::N   OO:::::::::OO   \r\n"
-						+ "        CCCCCCCCCCCCCAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS   IIIIIIIIIINNNNNNNN         NNNNNNN     OOOOOOOOO \n\n");
+		System.out.println("  /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ /$$   /$$  /$$$$$$ \r\n"
+				+ " /$$__  $$ /$$__  $$ /$$__  $$|_  $$_/| $$$ | $$ /$$__  $$\r\n"
+				+ "| $$  \\__/| $$  \\ $$| $$  \\__/  | $$  | $$$$| $$| $$  \\ $$\r\n"
+				+ "| $$      | $$$$$$$$|  $$$$$$   | $$  | $$ $$ $$| $$  | $$\r\n"
+				+ "| $$      | $$__  $$ \\____  $$  | $$  | $$  $$$$| $$  | $$\r\n"
+				+ "| $$    $$| $$  | $$ /$$  \\ $$  | $$  | $$\\  $$$| $$  | $$\r\n"
+				+ "|  $$$$$$/| $$  | $$|  $$$$$$/ /$$$$$$| $$ \\  $$|  $$$$$$/\r\n"
+				+ " \\______/ |__/  |__/ \\______/ |______/|__/  \\__/ \\______/ \r\n"
+				+ "                                                          ");
 
 		int dinero = 5000;
 		String eleccion;
 		boolean juego = true;
 
 		while (juego == true) {
-			System.out.println("\n\n");
+			System.out.println("\n");
 			System.out.println(" *******************");
-			System.out.println("  * DINERO : " + dinero + " € *");
+			System.out.println("  * DINERO : " + dinero + " �");
 			System.out.println(" *******************");
 			do {
 				System.out.println("A que juego quieres jugar \n a) Bingo\n b) Crash\n c) Ruleta\n d) Salir");
 				eleccion = teclado.nextLine().toLowerCase();
 			} while (!eleccion.equals("a") && !eleccion.equals("b") && !eleccion.equals("c") && !eleccion.equals("d"));
-			
-			if(dinero <= 0) {
+
+			if (dinero <= 0) {
 				juego = false;
-			}else if (eleccion.equals("a")) {
+			} else if (eleccion.equals("a")) {
 				dinero = juegobingo(dinero);
 			} else if (eleccion.equals("b")) {
 				dinero = juegocrash(dinero);
@@ -61,7 +51,6 @@ public class casino {
 
 	// BINGO
 	public static int juegobingo(int dinero) {
-		System.out.println("BIENVENIDOS AL CASINO");
 		Scanner sc = new Scanner(System.in);
 		int num = 0;
 
@@ -72,7 +61,8 @@ public class casino {
 				+ "| $$__  $$  | $$  | $$  $$$$| $$|_  $$| $$  | $$\r\n"
 				+ "| $$  \\ $$  | $$  | $$\\  $$$| $$  \\ $$| $$  | $$\r\n"
 				+ "| $$$$$$$/ /$$$$$$| $$ \\  $$|  $$$$$$/|  $$$$$$/\r\n"
-				+ "|_______/ |______/|__/  \\__/ \\______/  \\______\n");
+				+ "|_______/ |______/|__/  \\__/ \\______/  \\______/ \r\n"
+				+ "                                                ");
 
 		int elegir = 0;
 		String siOno = "none";
@@ -84,7 +74,7 @@ public class casino {
 				System.out.println("Elige el modo de juego: \n[1] Jugador VS IA \n[2] jugador VS jugador");
 				elegir = Integer.parseInt(sc.next());
 			} catch (Exception e) {
-				System.out.println("Caracter inválido, vuelve a elegir \n");
+				System.out.println("Caracter invalido, vuelve a elegir \n");
 			}
 		} while (elegir != 1 && elegir != 2);
 
@@ -96,11 +86,11 @@ public class casino {
 			while (repetir) {
 				do {
 					try {
-						System.out.println("Precio del cartón: 10€ \nSaldo actual: " + dinero);
-						System.out.println("Quieres comprar un cartón? (si/no)");
+						System.out.println("Precio del carton: 10� \nSaldo actual: " + dinero);
+						System.out.println("Quieres comprar un carton? (si/no)");
 						siOno = sc.nextLine().toLowerCase();
 					} catch (Exception e) {
-						System.out.println("Caracter inválido, vuelve a elegir \n");
+						System.out.println("Caracter invalido, vuelve a elegir \n");
 					}
 				} while (!siOno.equals("si") && !siOno.equals("no"));
 
@@ -117,7 +107,7 @@ public class casino {
 					bingo(carton, true, dinero);
 
 				} else if (siOno.equals("no")) {
-					System.out.println("No podemos dejaros jugar, fuera de aquí!");
+					System.out.println("No podemos dejaros jugar, fuera de aqui");
 					break;
 				}
 				do {
@@ -125,7 +115,7 @@ public class casino {
 						System.out.println("Quieres volver a jugar? (si/no)");
 						jugarrep = sc.nextLine().toLowerCase();
 					} catch (Exception e) {
-						System.out.println("Caracter inválido, vuelve a elegir \n");
+						System.out.println("Caracter invalido, vuelve a elegir \n");
 					}
 				} while (!siOno.equals("si") && !siOno.equals("no"));
 
@@ -145,11 +135,11 @@ public class casino {
 			while (repetir) {
 				do {
 					try {
-						System.out.println("Precio del cartón: 10€ \nSaldo actual: " + dinero);
+						System.out.println("Precio del carton: 10� \nSaldo actual: " + dinero);
 						System.out.println("Quieres comprar cartones (si/no)");
 						siOno = sc.nextLine().toLowerCase();
 					} catch (Exception e) {
-						System.out.println("Caracter inválido, vuelve a elegir \n");
+						System.out.println("Caracter invalido, vuelve a elegir \n");
 					}
 				} while (!siOno.equals("si") && !siOno.equals("no"));
 
@@ -160,7 +150,7 @@ public class casino {
 					bingo(carton, false, dinero);
 
 				} else if (siOno.equals("no")) {
-					System.out.println("No podemos dejaros jugar, fuera de aquí!");
+					System.out.println("No podemos dejaros jugar, fuera de aqui");
 					break;
 				}
 
@@ -169,7 +159,7 @@ public class casino {
 						System.out.println("Quereis volver a jugar? (si/no)");
 						jugarrep = sc.nextLine().toLowerCase();
 					} catch (Exception e) {
-						System.out.println("Caracter inválido, vuelve a elegir \n");
+						System.out.println("Caracter invalido, vuelve a elegir \n");
 					}
 				} while (!siOno.equals("si") && !siOno.equals("no"));
 
@@ -180,7 +170,7 @@ public class casino {
 				}
 
 			}
-			System.out.println("Hasta pronto");
+			System.out.println("Hasta pronto!!!");
 		}
 		return dinero;
 	}
@@ -377,10 +367,7 @@ public class casino {
 		return false;
 	}
 
-	// CRASH
-	
-
-	// RULETA	//RULETA
+	// RULETA
 	public static int juegoruleta(int dinero) {
 		Scanner teclado = new Scanner(System.in);
 
@@ -394,23 +381,24 @@ public class casino {
 
 		boolean jugar = true;
 
-		System.out.println("$$$$$$$\\  $$\\   $$\\ $$\\       $$$$$$$$\\ $$$$$$$$\\  $$$$$$\\  \r\n"
-				+ "$$  __$$\\ $$ |  $$ |$$ |      $$  _____|\\__$$  __|$$  __$$\\ \r\n"
-				+ "$$ |  $$ |$$ |  $$ |$$ |      $$ |         $$ |   $$ /  $$ |\r\n"
-				+ "$$$$$$$  |$$ |  $$ |$$ |      $$$$$\\       $$ |   $$$$$$$$ |\r\n"
-				+ "$$  __$$< $$ |  $$ |$$ |      $$  __|      $$ |   $$  __$$ |\r\n"
-				+ "$$ |  $$ |$$ |  $$ |$$ |      $$ |         $$ |   $$ |  $$ |\r\n"
-				+ "$$ |  $$ |\\$$$$$$  |$$$$$$$$\\ $$$$$$$$\\    $$ |   $$ |  $$ |\r\n"
-				+ "\\__|  \\__| \\______/ \\________|\\________|   \\__|   \\__|  \\__|\n\n");
+		System.out.println(" /$$$$$$$  /$$   /$$ /$$       /$$$$$$$$ /$$$$$$$$ /$$$$$$ \r\n"
+				+ "| $$__  $$| $$  | $$| $$      | $$_____/|__  $$__//$$__  $$\r\n"
+				+ "| $$  \\ $$| $$  | $$| $$      | $$         | $$  | $$  \\ $$\r\n"
+				+ "| $$$$$$$/| $$  | $$| $$      | $$$$$      | $$  | $$$$$$$$\r\n"
+				+ "| $$__  $$| $$  | $$| $$      | $$__/      | $$  | $$__  $$\r\n"
+				+ "| $$  \\ $$| $$  | $$| $$      | $$         | $$  | $$  | $$\r\n"
+				+ "| $$  | $$|  $$$$$$/| $$$$$$$$| $$$$$$$$   | $$  | $$  | $$\r\n"
+				+ "|__/  |__/ \\______/ |________/|________/   |__/  |__/  |__/\r\n"
+				+ "                                                           ");
 
 		while (jugar == true) {
 
 			System.out.println(" *******************");
-			System.out.println("  * SALDO : " + dinero + " € *");
+			System.out.println("  * DINERO : " + dinero + " �");
 			System.out.println(" *******************");
 
 			do {
-				System.out.println("Quieres apostar en la ruleta ? \n-Si \n-No");
+				System.out.println("Quieres apostar en la ruleta? (si/no)");
 				respuesta = teclado.nextLine().toLowerCase();
 			} while (!respuesta.equals("si") && !respuesta.equals("no"));
 
@@ -423,7 +411,7 @@ public class casino {
 				do {
 					apuesta = 0;
 					try {
-						System.out.println("Cuanto quieres apostar de tus " + dinero + " € ?");
+						System.out.println("Cuanto quieres apostar de tus " + dinero + " �?");
 						apuesta = Integer.parseInt(teclado.next());
 					} catch (Exception e) {
 						System.out.println("Caracter invalido");
@@ -633,18 +621,18 @@ public class casino {
 		return ruleta;
 	}
 
-	//CRASH
+	// CRASH
 	public static int juegocrash(double dinero) {
-		
+
 		Scanner sc = new Scanner(System.in);
-		
+
 		String decicion = "";
-		
+
 		double eleccion = 0;
 		double elnumerito = 0;
 		double money_apuesta = 0;
 		double el_ultimo_porcentaje = 0;
-		
+
 		boolean seguirsiono = true;
 		int dados = 0;
 
@@ -653,78 +641,73 @@ public class casino {
 		do {
 			System.out.println("Sabes como jugar al crash? (si/no)");
 			decicion = sc.nextLine().toLowerCase();
-		}while(!decicion.equals("si") && !decicion.equals("no"));
-		
+		} while (!decicion.equals("si") && !decicion.equals("no"));
+
 		if (decicion.equals("no")) {
 			como_juugar();
 			decicion = "";
 		}
-		
-		
-		
+
 		while (seguirsiono == true) {
 
-			
-			
-			System.out.println("Saldo actual "+dinero+" €");
-			
-			
+			System.out.println("Saldo actual " + dinero + " �");
+
 			do {
 				money_apuesta = -1;
 				try {
-					System.out.println("Cuanto quieres apostar? (max "+dinero+" €)");
+					System.out.println("Cuanto quieres apostar? (max " + dinero + " �)");
 					money_apuesta = Integer.parseInt(sc.next());
 				} catch (Exception e) {
 					System.out.println("Caracter invalido");
 				}
 			} while (money_apuesta > dinero || money_apuesta < 0);
-			
+
 			do {
 				eleccion = -1;
 				try {
 					System.out.println("Por cuanto quieres multiplicar tu apuesta?");
 					eleccion = Double.parseDouble(sc.next());
-				}catch(Exception e) {
+				} catch (Exception e) {
 					System.out.println("Caracter invalido");
 				}
 
 			} while (eleccion > 100.00 || eleccion < 0);
-			
+
 			sc.nextLine();
 
 			el_ultimo_porcentaje = la_chicha(dados, elnumerito);
 
 			if (eleccion <= el_ultimo_porcentaje) {
 				double newmoney = (money_apuesta * eleccion);
-				dinero = dinero-money_apuesta;
-				dinero = dinero + newmoney;
-				System.out.println("\nHas ganado "+newmoney+" €");
-			}else {
 				dinero = dinero - money_apuesta;
-				System.out.println("\nHas perdido "+money_apuesta+" €");
+				dinero = dinero + newmoney;
+				System.out.println("\nHas ganado " + newmoney + " �");
+			} else {
+				dinero = dinero - money_apuesta;
+				System.out.println("\nHas perdido " + money_apuesta + " �");
 			}
-			
-			if(dinero > 0) {
-				
-			do {
-				try {
-					System.out.println("Quieres seguir jugando? (si/no)");
-					decicion = sc.nextLine().toLowerCase();
-				} catch (Exception e) {
-					System.out.println("Caracter inv�lido, vuelve a elegir \n");
-				}
-			}while(!decicion.equals("si") && !decicion.equals("no"));
 
-			if (decicion.equals("no")) {
-				seguirsiono = false;
-			}
-			}else {
+			if (dinero > 0) {
+
+				do {
+					try {
+						System.out.println("Quieres seguir jugando? (si/no)");
+						decicion = sc.nextLine().toLowerCase();
+					} catch (Exception e) {
+						System.out.println("Caracter invalido, vuelve a elegir \n");
+					}
+				} while (!decicion.equals("si") && !decicion.equals("no"));
+
+				if (decicion.equals("no")) {
+					seguirsiono = false;
+				}
+			} else {
 				break;
 			}
-			
+
 		}
-		System.out.println("Hasta pronto!!!");		
-		return (int)dinero;
+		System.out.println("Hasta pronto!!!");
+		return (int) dinero;
 	}
 
 	public static double la_chicha(int dados, double elnumerito) {
@@ -780,7 +763,8 @@ public class casino {
 				+ "| $$      | $$__  $$| $$__  $$ \\____  $$| $$__  $$\r\n"
 				+ "| $$    $$| $$  \\ $$| $$  | $$ /$$  \\ $$| $$  | $$\r\n"
 				+ "|  $$$$$$/| $$  | $$| $$  | $$|  $$$$$$/| $$  | $$\r\n"
-				+ " \\______/ |__/  |__/|__/  |__/ \\______/ |__/  |__/\n\n");
+				+ " \\______/ |__/  |__/|__/  |__/ \\______/ |__/  |__/\r\n"
+				+ "                                                  ");
 	}
 
 	public static void como_juugar() {
