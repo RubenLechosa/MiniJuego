@@ -20,6 +20,8 @@ public class Bingo {
 		int elegir = 0;
 		int dinero = 1000;
 		String siOno = "none";
+		boolean repetir = true;
+		String jugarrep = "none";
 		
 		do {
 			try {
@@ -35,6 +37,7 @@ public class Bingo {
 		if (elegir == 1) {
 			String carton[][][] = new String[2][3][5];
 
+			while(repetir) {
 			do {
 				try {
 					System.out.println("Precio del cartón: 10€ \nSaldo actual: "+dinero);
@@ -53,18 +56,80 @@ public class Bingo {
 				} catch (Exception e) {
 					System.out.println(e);
 				}
+				
 				rellenar(carton);
-				bingo(carton, true);
+				bingo(carton, true, dinero);
+				
 			}else if(siOno.equals("no")) {
-				System.out.println("No podemos dejarte jugar, lo siento");
+				System.out.println("No podemos dejaros jugar, fuera de aquí!");
+				break;
 			}
+				do {
+					try {
+						System.out.println("Quieres volver a jugar? (si/no)");
+						jugarrep = sc.nextLine().toLowerCase();
+					} catch (Exception e) {
+						System.out.println("Caracter inválido, vuelve a elegir \n");
+					}
+				} while (!siOno.equals("si") && !siOno.equals("no"));
+				
+				if(jugarrep.equals("si")) {
+					repetir = true;
+				}else {
+					repetir = false;
+				}
+				
+				
+			}
+			System.out.println("Hasta pronto!!!");
 			
-		} else {
+			
+		}else {
 			num = cuantos();
 			String carton[][][] = new String[num][3][5];
-			rellenar(carton);
-			bingo(carton, false);
+
+						
+			while(repetir) {
+			do {
+				try {
+					System.out.println("Precio del cartón: 10€ \nSaldo actual: "+dinero);
+					System.out.println("Quieres comprar cartones (si/no)");
+					siOno = sc.nextLine().toLowerCase();
+				} catch (Exception e) {
+					System.out.println("Caracter inválido, vuelve a elegir \n");
+				}
+			} while (!siOno.equals("si") && !siOno.equals("no"));
+			
+			if(siOno.equals("si")) {
+				dinero = dinero - (10*carton.length);
+
+				rellenar(carton);
+				bingo(carton, false, dinero);
+				
+			}else if(siOno.equals("no")) {
+				System.out.println("No podemos dejaros jugar, fuera de aquí!");
+				break;
+				}
+				
+				do {
+					try {
+						System.out.println("Quereis volver a jugar? (si/no)");
+						jugarrep = sc.nextLine().toLowerCase();
+					} catch (Exception e) {
+						System.out.println("Caracter inválido, vuelve a elegir \n");
+					}
+				} while (!siOno.equals("si") && !siOno.equals("no"));
+				
+				if(jugarrep.equals("si")) {
+					repetir = true;
+				}else {
+					repetir = false;
+				}
+			
+			}
+			System.out.println("Hasta pronto");
 		}
+		
 	}
 
 	public static int cuantos() {
@@ -120,7 +185,7 @@ public class Bingo {
 		}
 	}
 
-	public static void bingo(String mapa[][][], boolean ia) {
+	public static void bingo(String mapa[][][], boolean ia, int dinero) {
 		Random aleatorio = new Random();
 
 		int temp = 0;
@@ -129,7 +194,8 @@ public class Bingo {
 		boolean fin = false;
 		boolean comprobar = false;
 		boolean encontrada = false;
-
+		int ganador = 1;
+		
 		System.out.println();
 		mostrar(mapa);
 
@@ -152,6 +218,9 @@ public class Bingo {
 						if (comprobar == true && encontrada == false) {
 							System.out.println("LINEA DEL JUGADOR " + (x + 1));
 							encontrada = true;
+							if(ganador == (x+1)) {
+								dinero = dinero + 20;
+							}
 							try {
 								Thread.sleep(2*2000);
 							} catch (Exception e) {
@@ -162,6 +231,9 @@ public class Bingo {
 						if (lleno(mapa[x]) == true) {
 							fin = true;
 							System.out.println("BINGO, EL JUGADOR " + (x + 1) + " HA GANADO");
+							if(ganador == (x+1)) {
+								dinero = dinero + 30;
+							}
 							i = vector.length;
 						}
 					}
