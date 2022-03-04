@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class casino {
-
+	/*Se recomienda descargar en el marketplace (ANSI Escape in console) para una mejor experiencia*/
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
 	public static final String ANSI_GREEN = "\u001B[32m";
