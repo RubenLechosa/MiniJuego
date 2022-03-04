@@ -1,2 +1,2 @@
 # MiniJuego
-Mini Juego Java con los juegos: Bingo, Crash y Ruleta
+Mini Juego en Java con los juegos: Bingo, Crash y Ruleta
